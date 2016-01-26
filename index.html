@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="infoBox">
+<head>
+    <title>Test</title>
+    <link href="css/info-box.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-animate.js"></script>
+    <script src="js/angular-touch.js"></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/info-box.js"></script>
+</head>
+
+<body ng-controller="infoBoxCtrl">
+<div class="info-box shadow" ng-animate="'animate'" ng-repeat="product in products" class="slide"
+     ng-swipe-right="showPrev()" ng-swipe-left="showNext()" ng-show="isActive($index)">
+
+
+    <div class="image" ng-hide="checked" ng-show="unchecked">
+        <img ng-src="{{product.img}}" alt="{{product.title}}">
+    </div>
+
+    <div class="info">
+        <div class="info-header">
+            <div class="info-header-title">{{product.title}}</div>
+        </div>
+        <div class="info-body">
+            <div class="info-body-desc">{{product.description}}</div>
+            <div class="info-body-note" ng-show="checked">{{product.note}}</div>
+        </div>
+    </div>
+
+    <div class="action">
+        <div class="more">
+            <label class="info-show-details">
+                <input type="checkbox" ng-model="checked" hidden id="checkbox-none">
+                <span class="info-more-link" ng-hide="checked">show details</span>
+                <span class="info-more-link" ng-show="checked">hide details</span>
+            </label>
+        </div>
+        <div class="info-button btn-left">
+            <div class="btn-arrow">
+                <i class="fa fa-angle-double-left"></i>
+            </div>
+            <a href="#" class="link-none-decoration" ng-click="showPrev()">
+                <div class="btn-title">
+                    <div class="btn-title-text">Prev</div>
+                </div>
+            </a>
+        </div>
+        <div class="info-button btn-right">
+            <a href="#" class="link-none-decoration" ng-click="showNext()">
+                <div class="btn-title">
+                    <div class="btn-title-text">Next</div>
+                </div>
+            </a>
+            <div class="btn-arrow">
+                <i class="fa fa-angle-double-right"></i>
+            </div>
+        </div>
+        <div class="btn-find">
+            <a href="#" class="link-none-decoration">
+                <div class="btn-find-title">
+                    <div class="btn-title-text">Find a Store</div>
+                </div>
+                <div class="btn-find-arrow"><i class="fa fa-caret-right"></i></div>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
